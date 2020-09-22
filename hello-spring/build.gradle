@@ -9,7 +9,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 repositories {
-	mavenCentral()
+	mavenCentral() //mavenCentral이라는 공개되있는 사이트가 있는데 여기서 다운로드 받알.
 }
 
 dependencies {
@@ -19,7 +19,7 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 }
-
+// testImplementation junit 5 버전이 기본적으로 들어옴
 test {
 	useJUnitPlatform()
 }
