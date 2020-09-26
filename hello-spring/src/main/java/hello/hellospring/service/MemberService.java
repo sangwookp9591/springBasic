@@ -2,15 +2,27 @@ package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+/*
+* spring bean을등록하는 2가지 방법
+*
+* 1. component scane
+*  @Controller, @Service, @Repository
+*
+* 2. 자바 코드로 직접 스프링 빈 등록하기
+* */
+@Service
 public class MemberService {
     //class 선택후 ctrl_shift_t -> test class 생성
     // private final MemberRepository memberRepository =  new MemoryMemberRepository();
+
     private final MemberRepository memberRepository;
 
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

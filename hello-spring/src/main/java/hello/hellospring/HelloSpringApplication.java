@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+//hello.hellospring을 포함한 또는 그하위만 component-scan 대상이된다.
 public class HelloSpringApplication {
 	// SpringBootApplication 이렇게하면 띄우면서  tomcat webserver 내장하고 있어서
 	// 자체적으로 띄우면서 스프링부타가 같이 올라간다.
