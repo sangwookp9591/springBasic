@@ -1,8 +1,14 @@
 package hello.hellospring.controller;
 
+import hello.hellospring.domain.Member;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller //기능은없지마 spring이뜰때 sprinmg container라는 통이있는데. 거기에 어노테이션이 있으면 생성해서 담고 관리를 한다.
 public class MemberController {//spring container에서 bean이 관리된다.
@@ -41,6 +47,32 @@ public class MemberController {//spring container에서 bean이 관리된다.
     @Autowired
     public void setMemberService(MemberService memberService) {
         this.memberService =  memberService;
+    }
+
+
+    //createForm, create 메서드가 url은똑같지만 get이냐 post냐에따라서 다르게 mapping 할 수 있다.
+
+    @GetMapping("/members/new")
+    public String createForm(){
+        return "members/createMemberForm";
+    }
+
+    @PostMapping("/members/new")//보통 데이터를 form에 넣어서 전달할때 Get은 데이터 조회시 사용.
+    public String create(MemberForm form){
+        //input name으로 들어온걸보고 spring 이 자동으로 setName 을 호출하여 form에  name을 삽입해준다.
+        Member member = new Member();
+        member.setName(form.getName());
+
+        memberService.join(member);
+
+        return "redirect:/";
+    }
+
+    @GetMapping("/members/")
+    public String list(Model model){
+        List<Member> members =  memberService.findMembers();
+        model.addAttribute("members",members);
+        return "members/memberList";
     }
 }
 
