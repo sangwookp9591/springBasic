@@ -1,23 +1,27 @@
 package hello.hellospring.service;
 
 import hello.hellospring.repository.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 
 @Configuration //spring이 뜰때 Configuration읽어오고 아래 로직을 호출해서 spring bean에 등록한다.
 public class SpringConfig {
+    private final MemberRepository memberRepository;
+    //spirng data jpa가 만들어놓은 구현체가 대입이된다.
 
-    private EntityManager em;
-    @Autowired
-    public SpringConfig(EntityManager em){
-        this.em = em;
+//    private EntityManager em;
+//    @Autowired
+//    public SpringConfig(EntityManager em){
+//        this.em = em;
+//    }
+
+    //private DataSource dataSource; //db에 연결할수있는 정보를 만들어주고
+
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
-
-    private DataSource dataSource; //db에 연결할수있는 정보를 만들어주고
 
    /* @Autowired
    public SpringConfig(DataSource dataSource) { //의존성 주입을 한다.
@@ -30,9 +34,9 @@ public class SpringConfig {
     //Controller는 어차피 스프링이 관리하는것이기 때문에 component scan을 통해 이용
     @Bean //Spring bean을 등록할거야
     public MemberService memberService(){
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
-
+/*
     @Bean
     public MemberRepository memberRepository(){
         //return new MemoryMemberRepository();
@@ -41,10 +45,11 @@ public class SpringConfig {
 
         //return new JdbcTemplateMemberRepository(dataSource);
 
-        return new JpaMemberRepository(em);
+        //return new JpaMemberRepository(em);
 
 
-    }
+
+    }*/
     /*
     * 여기서 다형성을 알수 있다 인터페이스를 두고 구현체를 바꿔끼기를 할 수 있따.
     *
