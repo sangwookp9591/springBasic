@@ -49,8 +49,8 @@ public class TimeTraceAop {
     *
     * AOP적용후 의존관계
     * helloController  -> memberService(가짜 프록시)  -> memberService
-    * - Spring은 AOP가 있으면 가짜  memberService(프록시)를 만들어 낸다.
-    * - spring container는  동작할때 스프링빈을 등록할떄 진짜 Spring bean을 말고
+    * -  Spring은 AOP가 있으면 가짜  memberService(프록시)를 만들어 낸다.
+    * -  spring container는  동작할때 스프링빈을 등록할떄 진짜 Spring bean을 말고
     *   가짜 스프링빈을 앞에 새워 놓는다. 그리고 가짜 spring bean이 끝나면
     *   joinPoint.proceed()하면 내부적으로 이것저것 타서 그때 진짜를 호출해준다.
     *   helloController가 호출하는건 진짜  service가 아니라 프록시라는 기술로 발생하는 가짜 serivce이다
