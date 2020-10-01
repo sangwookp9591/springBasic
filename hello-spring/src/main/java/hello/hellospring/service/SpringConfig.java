@@ -1,5 +1,6 @@
 package hello.hellospring.service;
 
+import hello.hellospring.aop.TimeTraceAop;
 import hello.hellospring.repository.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -60,4 +61,9 @@ public class SpringConfig {
     *
     *
     * */
+
+    @Bean //AOP는 평범하지않고 특별한 부분이기 떄문에 AOP를 인지할 수 있는 부분에 등록해야한다.
+    public TimeTraceAop timeTraceAop(){
+        return new TimeTraceAop();
+    }
 }

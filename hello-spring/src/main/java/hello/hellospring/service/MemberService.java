@@ -43,13 +43,23 @@ public class MemberService {
         });*/
 
         //optional을 result.바로 반환하는 것은 별로기때문에.
-        validateDuplicateMember(member);//중복회원검색
+       // long start  = System.currentTimeMillis();
+       // try {
+
+
+            validateDuplicateMember(member);//중복회원검색
   /*      memberRepository.findByName(member.getName())
                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 존재하는 회원입니다.");
                 }); ctrl+alt +m으로 바로 메서드로 뽑아서 사용 ctrl_alt_shit_t refactoring관련 검색*/
-        memberRepository.save(member);
-        return member.getId();
+            memberRepository.save(member);
+            return member.getId();
+//        }finally {
+//            long finish = System.currentTimeMillis();
+//            long timeMs = finish -start;
+//            System.out.println("join = "+ timeMs +"ms");
+//        }
+
     }
 
     private void validateDuplicateMember(Member member) {
@@ -63,7 +73,14 @@ public class MemberService {
     전체 회원 조회
     */
     public List<Member> findMembers(){
-      return  memberRepository.findAll();
+//        long start  = System.currentTimeMillis();
+//        try {
+            return memberRepository.findAll();
+//        }finally {
+//            long finish = System.currentTimeMillis();
+//            long timeMs = finish -start;
+//            System.out.println("findMembers "+timeMs +"ms");
+//        }
     }
 
     public Optional<Member> findOne(Long memberId){
