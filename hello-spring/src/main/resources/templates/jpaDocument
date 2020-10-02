@@ -1,0 +1,22 @@
+객체지향보다는
+SQL 중심적인 개발..
+
+무한반복, 지루한 코드
+
+CRUD 코드를 작성해야하고
+자바 객체를 SQL로...
+SQL을 자바 객체로...
+
+
+객체와 관계형 데이터베이스의 차이
+
+1. 상속
+- 관계형 DB에는 상속관계가 없다고 보면된다.
+
+2. 연관관계
+- 객체는 참조를가지고 하는데, DB는 PK FK JOIN을 통해서 찾는다.
+- member.getTeam() /객체는 MEMEBER에서 TEAM 갈수있지만 TEAM에서 MEMBER로 못간다.(참조가 없기때문에)
+- JOIN ON M.TEAM_ID = T.TEAM_ID /TEAM_ID(FK)를 가지고있기때문에 TEAM의 TEAM_ID(PK)로 TEAM에서 MEMBER를 갈수있다.
+
+3. 데이터 타입
+4. 데이터 식별 방법
